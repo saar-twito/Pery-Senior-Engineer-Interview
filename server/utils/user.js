@@ -1,0 +1,1 @@
+export const users = {};  // In-memory storage for user preferences
