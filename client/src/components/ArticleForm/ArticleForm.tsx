@@ -12,6 +12,7 @@ function ArticleForm({ token, savedLanguage }: ArticleFormProps) {
   const [language, setLanguage] = useState<string>('');
   const [result, setResult] = useState<string>('');
   const [error, setError] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   // Regular expression for valid article names (only letters, numbers, hyphens, and underscores)
   const validArticleNameRegex = /^[a-zA-Z0-9_-]+$/;
@@ -35,6 +36,7 @@ function ArticleForm({ token, savedLanguage }: ArticleFormProps) {
     }
 
     try {
+      setIsLoading(true);
       const response = await axiosInstance.get(`introduction/${articleName}`, {
         headers,
       });
@@ -44,6 +46,9 @@ function ArticleForm({ token, savedLanguage }: ArticleFormProps) {
       const errorMessage = error.response?.data?.error || 'Error fetching the article.';
       setResult('');
       setError(errorMessage);
+    }
+    finally {
+      setIsLoading(false);
     }
   };
 
@@ -73,6 +78,8 @@ function ArticleForm({ token, savedLanguage }: ArticleFormProps) {
 
         <button type="submit" className={styles.button}>Fetch Introduction</button>
       </form>
+
+      {isLoading && <p>Loading...</p>}
 
       {result && (
         <div className={styles.resultContainer}>
