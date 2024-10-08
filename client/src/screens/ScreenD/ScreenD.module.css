@@ -3,6 +3,11 @@
   text-align: left;
 }
 
+.image {
+  width: 100%;
+  max-width: 300px;
+}
+
 
 .label {
   font-size: 14px;

@@ -54,9 +54,7 @@ const ScreenD: React.FC<ScreenDProps> = ({ token, articleName, language, startOv
           <Loader />
         ) : (
           <div className={style.container}>
-            <div className={style.imageContainer}>
-              <img src="assets/celebratory.png" alt="Celebratory Illustration" className={style.image} />
-            </div>
+            <img src="assets/celebratory.png" alt="Celebratory Illustration" className={style.image} />
             <h2 className={style.subtitle}>Enjoy reading your article:</h2>
             {error ? (
               <p className={style.error}>{error}</p>
