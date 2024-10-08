@@ -43,7 +43,7 @@ const ScreenB: React.FC<ScreenBProps> = ({ nextScreen, userName, setSavedLanguag
   return (
     <>
       <Layout
-        leftContent={<Title title={'Welcome to Pery!'} />}
+        leftContent={<Title title={isLoading ? 'Wait a sec...' : "Welcome to Pery!"} />}
         rightContent={
           <form className={style.container} onSubmit={handleSubmit}>
             <SubTitle subtitle={<>Nice to meet you!</>} />
