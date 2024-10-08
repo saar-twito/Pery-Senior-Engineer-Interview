@@ -10,7 +10,9 @@ const router = Router();
 const validArticleNameRegex = /^[a-zA-Z0-9_-]+$/;
 
 router.get('/introduction/:articleName', async (req, res) => {
+
   const { articleName } = req.params;
+
   const token = req.headers['x-authentication'];
   const manualLanguage = req.headers['accept-language'];
 
@@ -57,6 +59,7 @@ router.get('/introduction/:articleName', async (req, res) => {
     // Return the result
     res.json(result);
   } catch (error) {
+    console.error('Error:', error);
     res.status(400).json({ error: 'Invalid article name or Wikipedia not available.' });
   }
 });

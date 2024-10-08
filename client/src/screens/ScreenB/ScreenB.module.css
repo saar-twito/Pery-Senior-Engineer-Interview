@@ -1,0 +1,22 @@
+.container {
+  max-width: 450px;
+  text-align: left;
+}
+
+
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.radioLabel {
+  font-size: 16px;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.radioLabel input {
+  margin-right: 8px;
+}

@@ -1,0 +1,25 @@
+.layout {
+  display: flex;
+  height: 100vh;
+  /* Full height of the viewport */
+}
+
+.leftSection {
+  width: 40%;
+  background: linear-gradient(to bottom, #7b42f6, #b598f8);
+  /* Example gradient to match the design */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  padding: 20px;
+}
+
+.rightSection {
+  width: 60%;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
