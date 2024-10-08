@@ -16,9 +16,11 @@ interface ScreenBProps {
 
 const ScreenB: React.FC<ScreenBProps> = ({ nextScreen, userName, setSavedLanguage, setToken }) => {
   const [language, setLanguage] = useState<string>('');
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
 
     try {
       // Send request to get the token
@@ -33,51 +35,57 @@ const ScreenB: React.FC<ScreenBProps> = ({ nextScreen, userName, setSavedLanguag
     } catch (error) {
       alert('Sign Up failed. Please try again.');
     }
+    finally {
+      setIsLoading(false);
+    }
   };
 
   return (
-    <Layout
-      leftContent={<Title title={'Welcome to Pery!'} />}
-      rightContent={
-        <form className={style.container} onSubmit={handleSubmit}>
-          <SubTitle subtitle={<>Nice to meet you!</>} />
-          <p className={style.subTitle}>Which language do you prefer to read?</p>
-          <div className={style.radioGroup}>
-            <label className={style.radioLabel}>
-              <input
-                type="checkbox"
-                name="language"
-                value="es"
-                checked={language === 'es'}
-                onChange={(e) => setLanguage(e.target.value)}
-              />
-              Spanish
-            </label>
-            <label className={style.radioLabel}>
-              <input
-                type="checkbox"
-                name="language"
-                value="en"
-                checked={language === 'en'}
-                onChange={(e) => setLanguage(e.target.value)}
-              />
-              English
-            </label>
-            <label className={style.radioLabel}>
-              <input
-                type="checkbox"
-                name="language"
-                value="fr"
-                checked={language === 'fr'}
-                onChange={(e) => setLanguage(e.target.value)}
-              />
-              French
-            </label>
-          </div>
-          <Button type='submit' content='Continue' icon={<LuMoveRight size={20} />} />
-        </form>
-      }
-    />
+    <>
+      <Layout
+        leftContent={<Title title={'Welcome to Pery!'} />}
+        rightContent={
+          <form className={style.container} onSubmit={handleSubmit}>
+            <SubTitle subtitle={<>Nice to meet you!</>} />
+            <p className={style.subTitle}>Which language do you prefer to read?</p>
+            <div className={style.radioGroup}>
+              <label className={style.radioLabel}>
+                <input
+                  type="checkbox"
+                  name="language"
+                  value="es"
+                  checked={language === 'es'}
+                  onChange={(e) => setLanguage(e.target.value)}
+                />
+                Spanish
+              </label>
+              <label className={style.radioLabel}>
+                <input
+                  type="checkbox"
+                  name="language"
+                  value="en"
+                  checked={language === 'en'}
+                  onChange={(e) => setLanguage(e.target.value)}
+                />
+                English
+              </label>
+              <label className={style.radioLabel}>
+                <input
+                  type="checkbox"
+                  name="language"
+                  value="fr"
+                  checked={language === 'fr'}
+                  onChange={(e) => setLanguage(e.target.value)}
+                />
+                French
+              </label>
+            </div>
+            <Button disabled={isLoading} type='submit' content='Continue' icon={<LuMoveRight size={20} />} />
+          </form>
+        }
+      />
+    </>
+
   );
 };
 

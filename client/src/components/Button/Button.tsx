@@ -6,11 +6,20 @@ interface ButtonProps {
   content: string;
   icon: React.ReactNode;
   onClick?: () => void;
+  disabled?: boolean;
 }
 
-const Button = ({ type = "submit", content, icon, onClick }: ButtonProps) => {
+const Button = ({ type = "submit", content, icon, onClick, disabled }: ButtonProps) => {
   return (
-    <button onClick={onClick} type={type} className={style.button}>{content} {icon}</button>
+    <button
+      style={disabled ? { opacity: 0.5, cursor: 'progress' } : {}}  // Adjust style when disabled
+      disabled={disabled}
+      onClick={onClick}
+      type={type}
+      className={style.button}
+    >
+      {content} {icon}
+    </button>
 
   )
 }
