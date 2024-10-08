@@ -15,6 +15,11 @@ const Layout: React.FC<LayoutProps> = ({ leftContent, rightContent }) => {
       <div className={style.rightSection}>
         {rightContent}
       </div>
+
+      <a className={style.faqs} target='_blank' href="https://mypery.com/#faqs" rel="noreferrer">
+        <img src="assets/support.png" alt="" />
+        FAQs & help
+      </a>
     </div>
   );
 };

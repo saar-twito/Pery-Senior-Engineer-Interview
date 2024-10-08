@@ -41,7 +41,7 @@ function App() {
             token={token}
             articleName={articleName}
             language={savedLanguage}
-            startOver={() => setScreen(1)}
+            startOver={() => setScreen(3)}
           />
         );
       default:
@@ -51,13 +51,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* <h1>Wikipedia Article Fetcher</h1>
-      {token && (
-        <div>
-          <h3>Your token: {token}</h3>
-        </div>
-      )}
-      {userName && <p>Welcome, {userName}!</p>} */}
       {renderScreen()}
     </div>
   );
